@@ -19,15 +19,14 @@
   "name": "secrets---starting-code",
   "version": "1.0.0",
   "main": "app.js",
-  "engines": {
-    "node": "16.16.0"
-  },
   "scripts": {
-    "start" : "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines":{
+    "node": "16.15.1"
+  },
   "description": ""
 }
