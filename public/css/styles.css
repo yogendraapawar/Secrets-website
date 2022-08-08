@@ -1,0 +1,52 @@
+
+body {
+  background-color: #E8ECEF;
+}
+
+.centered {
+    padding-top: 200px;
+    text-align: center;
+}
+
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  background-color: #000;
+}
+
+
+
+hr{
+  height: 1px;
+        background-color: #7db0de;
+        border: none;
+}
+
+.homeBackground{
+  color:#1d5c96;
+}
+.homeBackgroundProperty{
+  background-color:#1d5c96;
+}
+.secretInput{
+  padding: 1.5rem 0 1.5rem 0;
+  border-radius: 3rem;
+}
+
+.mainHeadingText{
+  color: #7db0de;
+}
+
+.mainHeadingBg{
+  background-color: #7db0de;
+}
+
+.paraText{
+  color:white;
+}
+
+.secretView{
+  border-style: solid;
+
+}
