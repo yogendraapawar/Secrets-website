@@ -9,16 +9,6 @@ const passportLocalMongoose=require('passport-local-mongoose');
 var findOrCreate = require('mongoose-findorcreate');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-// If the length of the element's string is 0 then display helper message
-   function required(inputtx)
-   {
-     if (inputtx.value.length == 0)
-      {
-         console.log("empty");
-         return false;
-      }
-      return true;
-    }
 
 
 var encrypt = require('mongoose-encryption');
@@ -67,25 +57,19 @@ userSchema.plugin(findOrCreate);
 const user= new mongoose.model('user',userSchema);
 passport.use(user.createStrategy());
 
-passport.serializeUser(function(user, cb) {
-  process.nextTick(function() {
-    return cb(null, {
-      id: user.id,
-      username: user.username,
-      picture: user.picture
-    });
-  });
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
 
-passport.deserializeUser(function(user, cb) {
-  process.nextTick(function() {
-    return cb(null, user);
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
   });
 });
 
 ///////////////PASSPORT GOOGLE AUTHENTICATION//////////
 passport.use(new GoogleStrategy({
-    clientId: process.env.CLIENT_ID,
+    clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/secrets",
     userProfileURL:"https://www.googleapis.com/oauth2/v3/userinfo"
