@@ -1,54 +1,172 @@
+@media only screen and (min-width: 300px) {
+  body {
+    background-color: #E8ECEF;
+  }
 
-body {
-  background-color: #E8ECEF;
-}
+  .centered {
+      padding-top: 200px;
+      text-align: center;
+  }
 
-.centered {
-    padding-top: 200px;
+  .secret-text {
     text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    background-color: #000;
+  }
+
+  .navOptions{
+    font-size: 175%;
+  }
+
+  hr{
+    height: 1px;
+          background-color: #7db0de;
+          border: none;
+  }
+
+  .homeBackground{
+    color:#1d5c96;
+  }
+  .homeBackgroundProperty{
+    background-color:#1d5c96;
+  }
+  .secretInput{
+    padding: 1.5rem 0 1.5rem 0;
+    border-radius: 3rem;
+  }
+
+  .mainHeadingText{
+    color: #7db0de;
+  }
+
+  .mainHeadingBg{
+    background-color: #7db0de;
+  }
+
+  .paraText{
+    color:white;
+  }
+
+  .secretView{
+    border-style: solid;
+
+  }
 }
 
-.secret-text {
-  text-align: center;
-  font-size: 2rem;
-  color: #fff;
-  background-color: #000;
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+@media only screen and (min-width: 768px) {
+  body {
+    background-color: #E8ECEF;
+  }
+
+  .centered {
+      padding-top: 200px;
+      text-align: center;
+  }
+
+  .secret-text {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    background-color: #000;
+  }
+
+  .navOptions{
+    font-size: 150%;
+  }
+
+  hr{
+    height: 1px;
+          background-color: #7db0de;
+          border: none;
+  }
+
+  .homeBackground{
+    color:#1d5c96;
+  }
+  .homeBackgroundProperty{
+    background-color:#1d5c96;
+  }
+  .secretInput{
+    padding: 1.5rem 0 1.5rem 0;
+    border-radius: 3rem;
+  }
+
+  .mainHeadingText{
+    color: #7db0de;
+  }
+
+  .mainHeadingBg{
+    background-color: #7db0de;
+  }
+
+  .paraText{
+    color:white;
+  }
+
+  .secretView{
+    border-style: solid;
+
+  }
 }
 
-.navOptions{
-  font-size: 150%;
-}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-hr{
-  height: 1px;
-        background-color: #7db0de;
-        border: none;
-}
+@media only screen and (min-width: 992px) {
+  body {
+    background-color: #E8ECEF;
+  }
 
-.homeBackground{
-  color:#1d5c96;
-}
-.homeBackgroundProperty{
-  background-color:#1d5c96;
-}
-.secretInput{
-  padding: 1.5rem 0 1.5rem 0;
-  border-radius: 3rem;
-}
+  .centered {
+      padding-top: 200px;
+      text-align: center;
+  }
 
-.mainHeadingText{
-  color: #7db0de;
-}
+  .secret-text {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    background-color: #000;
+  }
 
-.mainHeadingBg{
-  background-color: #7db0de;
-}
+  .navOptions{
+    font-size: 150%;
+  }
 
-.paraText{
-  color:white;
-}
+  hr{
+    height: 1px;
+          background-color: #7db0de;
+          border: none;
+  }
 
-.secretView{
-  border-style: solid;
+  .homeBackground{
+    color:#1d5c96;
+  }
+  .homeBackgroundProperty{
+    background-color:#1d5c96;
+  }
+  .secretInput{
+    padding: 1.5rem 0 1.5rem 0;
+    border-radius: 3rem;
+  }
+
+  .mainHeadingText{
+    color: #7db0de;
+  }
+
+  .mainHeadingBg{
+    background-color: #7db0de;
+  }
+
+  .paraText{
+    color:white;
+  }
+
+  .secretView{
+    border-style: solid;
+
+  }
 
 }
