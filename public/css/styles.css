@@ -15,7 +15,9 @@ body {
   background-color: #000;
 }
 
-
+.navOptions{
+  font-size: 150%;
+}
 
 hr{
   height: 1px;
