@@ -1,6 +1,6 @@
 @media only screen and (min-width: 300px) {
   body {
-    background-color: #E8ECEF;
+    background-color: #1d5c96
   }
 
   .centered {
@@ -83,7 +83,7 @@
 
 @media only screen and (min-width: 768px) {
   body {
-    background-color: #E8ECEF;
+    background-color: #1d5c96
   }
 
   .centered {
@@ -166,7 +166,7 @@
 
 @media only screen and (min-width: 992px) {
   body {
-    background-color: #E8ECEF
+    background-color: #1d5c96
   }
 
   .centered {
@@ -270,4 +270,9 @@
 
   
 
+}
+
+
+.dark{
+  .
 }

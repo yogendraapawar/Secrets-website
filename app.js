@@ -16,6 +16,7 @@ mongoose.set('strictQuery', true);
 var encrypt = require('mongoose-encryption');
 const bodyParser=require('body-parser');
 const ejs=require('ejs');
+const { ObjectId } = require('mongodb');
 
 const app=express();
 
@@ -278,8 +279,63 @@ user.findByIdAndUpdate(
   }
 );
 
-
 });
+
+app.post('/editsecret/:id', (req, res) => {
+  const secretId = req.params.id;
+  const editedSecret = req.body.editsecret;
+
+  // Now you can access the data submitted through the form
+  console.log(`Secret ID: ${secretId}`);
+  console.log(`Edited Secret: ${editedSecret}`);
+
+
+  // Perform any necessary actions with the data (e.g., update a database)
+  // ...
+  user.findOneAndUpdate(
+    {"secret._id":secretId},
+    { "$set": { "secret.$.usersecret": editedSecret }},
+    { new: true },  (err, result)=>{
+      if(err){
+        console.log("Error updating secret");
+      }else{
+        if(result){
+          console.log("Updated post");
+          res.redirect('/mydata');
+        }else{
+          console.log("No user found");
+        }
+      }
+    }
+  );
+  
+});
+app.get("/edit/:id",(req, res)=>{
+  const secretId=req.params.id;
+  user.findOne({ 'secret': { $elemMatch: { _id: secretId } } }, (err, user) => {
+    if (err) {
+      console.error(err);
+      // Handle the error
+    } else {
+      if (user) {
+        // The 'user' variable contains the user document with the specific secret
+        const specificSecret = user.secret[0]; // Since $elemMatch returns an array with a single element
+        
+        res.render('editsecret', {secret:specificSecret});
+        // Do something with the specific secret
+      } else {
+        // User not found
+        console.log('User not found');
+      }
+    }
+  });
+
+
+  
+  
+});
+
+
 
   app.listen(3000, function() {
     console.log("Server started on port 3000");
