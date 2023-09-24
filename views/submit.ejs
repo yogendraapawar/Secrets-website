@@ -1,20 +1,37 @@
 <%- include('partials/header') %>
 
-<div class="container-fluid">
-  <div class="jumbotron homeBackgroundProperty centered">
-    <i class="fas fa-solid fa-mask fa-6x mainHeadingText"></i>
-    <h1 class="display-3 mainHeadingText">Secrets</h1>
-    <p class="paraText">Don't keep your secrets, share them anonymously!</p><br>
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    width: 100%;
+  "
+>
+  <i class="fas fa-solid fa-mask fa-6x mainHeadingText"></i>
+  <h1 class="display-3 mainHeadingText">Secrets</h1>
+  <p class="paraText" style="text-align: center">
+    Don't keep your secrets, share them anonymously!
+  </p>
+  <br />
 
-    <form action="/submit" method="POST" onsubmit="required()">
-
-      <div class="form-group">
-        <input type="text" class="form-control text-center secretInput" name="secret" placeholder="What's your secret?">
-      </div>
-      <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
-
-
-  </div>
+  <form action="/submit" method="POST" onsubmit="required()">
+    <div class="form-group" style="display: flex; justify-content: center">
+      <input
+        type="text"
+        class="form-control text-center secretInput"
+        name="secret"
+        placeholder="What's your secret?"
+        style="width: 50rem; height: 5rem"
+      />
+    </div>
+    <div style="display: flex; justify-content: center">
+      <button type="submit" class="btn btn-dark" style="border-radius: 2rem">
+        Submit
+      </button>
+    </div>
+  </form>
 </div>
 <%- include('partials/footer') %>

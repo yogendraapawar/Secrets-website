@@ -1,34 +1,64 @@
 <%- include('partials/header') %>
 <div class="jumbotron homeBackgroundProperty container-fluid mt-5">
-  <h1 class="mainHeadingText"><i class="fas fa-solid fa-mask fa-1x mainHeadingText"></i> Register</h1>
-  <br>
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="mainHeadingBg card-body">
+  <div class="register_container">
+    <div class="card">
+      <div class="card-body">
+        <h1 style="color: #1d5c96">
+          <i
+            class="fas fa-solid fa-mask fa-1x"
+            style="color: #1d5c96; margin-bottom: 2rem"
+          ></i>
+          Register
+        </h1>
+        <!-- Makes POST request to /register route -->
+        <form action="/register" method="POST">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="username" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" />
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
 
-          <!-- Makes POST request to /register route -->
-          <form action="/register" method="POST">
-            <div class="form-group">
-              <label for="email" class="homeBackground">Email</label>
-              <input type="email" class="form-control" name="username">
-            </div>
-            <div class="form-group">
-              <label for="password" class="homeBackground">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-            <button type="submit" class="btn btn-dark">Register</button>
-          </form>
+              align-items: center;
+            "
+          >
+            <button
+              type="submit"
+              class="btn btn-dark"
+              style="
+                background-color: #1d5c96;
+                border-radius: 3rem;
+                height: fit-content;
+              "
+            >
+              Register
+            </button>
 
-        </div>
+            <div class="google">
+              <a
+                class="btn btn-block btn-google"
+                style="
+                  text-align: center;
+                  border-radius: 2rem;
+                  height: fit-content;
+                  width: 15rem;
+                "
+                href="/auth/google"
+                role="button"
+              >
+                <i class="fab fa-google fa-1x"></i> Sign Up with Google
+              </a>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-
-    <div class="col-sm-4">
-          <a class="btn btn-block btn-social btn-google" style="text-align:center" href="/auth/google" role="button">  <i class="fab fa-google fa-1x"></i>  Sign Up with Google
-          </a>
-    </div>
-
   </div>
 </div>
 

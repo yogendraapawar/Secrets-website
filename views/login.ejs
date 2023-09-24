@@ -1,41 +1,35 @@
 <%- include('partials/header') %>
-
 <div class="jumbotron homeBackgroundProperty container-fluid mt-5">
-  <h1 class="mainHeadingText"><i class="fas fa-solid fa-mask fa-1x mainHeadingText"></i> Login</h1>
-<br>
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="mainHeadingBg card-body border-light">
-
-          <!-- Makes POST request to /login route -->
-          <form action="/login" method="POST">
-            <div class="form-group">
-              <label for="email" class="homeBackground">Email</label>
-              <input type="email" class="form-control" name="username">
-            </div>
-            <div class="form-group">
-              <label for="password" class="homeBackground">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-            <button type="submit" class="btn btn-dark">Login</button>
-          </form>
-
-        </div>
+  <div class="register_container">
+    <div class="card">
+      <div class="card-body border-light">
+        <h1 style="color: #1d5c96">
+          <i
+            class="fas fa-solid fa-mask fa-1x"
+            style="color: #1d5c96; margin-bottom: 2rem"
+          ></i>
+          Login
+        </h1>
+        <!-- Makes POST request to /login route -->
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control email" name="username" />
+          </div>
+          <div class="form-group password">
+            <label for="password">Password</label>
+            <input type="password" class="form-control email" name="password" />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-dark"
+            style="background-color: #1d5c96; border-radius: 3rem"
+          >
+            Login
+          </button>
+        </form>
       </div>
     </div>
-
-    <!-- <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <a class="btn btn-block" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign In with Google
-          </a>
-        </div>
-      </div>
-    </div> -->
-
   </div>
 </div>
 

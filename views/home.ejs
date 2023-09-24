@@ -1,15 +1,31 @@
 <%- include('partials/header') %>
 
-
-<div class=" row centered homeBackground">
-  <div class="col-sm-12  container-fluid ">
-    <i class="fas fa-solid fa-mask fa-6x mainHeadingText"></i>
-    <h1 class="display-3 mainHeadingText">Secrets</h1>
-    <p class="lead paraText">Don't keep your secrets, share them anonymously!</p>
-    <hr class="mainHeadingText">
-    <a class="btn btn-light btn-lg" href="/register" role="button">Register</a>
-    <a class="btn btn-dark btn-lg" href="/login" role="button">Login</a>
-
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  "
+>
+  <i class="fas fa-solid fa-mask fa-6x mainHeadingText"></i>
+  <h1 class="display-3 mainHeadingText">Secrets</h1>
+  <p class="paraText" style="text-align: center">
+    Don't keep your secrets, share them anonymously!
+  </p>
+  <hr class="mainHeadingText" />
+  <div style="display: flex; flex-direction: row">
+    <a
+      class="btn btn-light btn-lg"
+      id="register_button"
+      href="/register"
+      role="button"
+      style="margin-right: 2rem"
+      >Register</a
+    >
+    <a class="btn btn-dark btn-lg" id="login_button" href="/login" role="button"
+      >Login</a
+    >
   </div>
 </div>
 

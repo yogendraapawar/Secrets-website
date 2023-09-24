@@ -1,6 +1,8 @@
 //jshint esversion:6
 require('dotenv').config();
 const express=require('express');
+var jsdom = require('jsdom');
+const $ = require('jquery')(new jsdom.JSDOM().window);
 const bcrypt = require('bcrypt');
 const mongoose=require('mongoose');
 const passport=require('passport');
@@ -8,7 +10,7 @@ const session=require('express-session');
 const passportLocalMongoose=require('passport-local-mongoose');
 var findOrCreate = require('mongoose-findorcreate');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
+mongoose.set('strictQuery', true);
 
 
 var encrypt = require('mongoose-encryption');
@@ -23,7 +25,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static("public"));
-mongoose.connect('mongodb+srv://yogendrapawar:Kepma%40Guitar@cluster0.vrkxemf.mongodb.net/userDB', {
+mongoose.connect('mongodb+srv://yogendrapawar:yogendra@cluster0.vrkxemf.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true
 });
 // mongoose.set("useCreateIndex",true);
@@ -37,17 +39,21 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 ///////////UserSchema////////////
 
 const userSchema= new mongoose.Schema({
   email:String,
   password:String,
   googleId:String,
-  secret:[{
-    usersecret:String,
-    newPostTime:String,
-    newPostDateAndDay:String
-  }]
+  secret: {
+    type: [{
+      usersecret: String,
+      newPostTime: String,
+      newPostDateAndDay: String
+    }],
+    default: []
+  }
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -71,7 +77,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://secretapplicationyogendra.herokuapp.com/auth/google/secrets",
+    callbackURL: "http://localhost:3000//auth/google/secrets",
     userProfileURL:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -209,12 +215,71 @@ app.get('/auth/google/secrets',
     }
   });
 
-  let port=process.env.PORT;
-  if(port===null||port===""){
-    port=3000;
-  }
-  app.listen(port);
+  // Define a route to handle DELETE requests
+app.delete('/delete', (req, res) => {
+  const itemIdToDelete = req.body.id; // Get the ID from the request body
+  console.log(itemIdToDelete);
+  // Use Mongoose to find and delete the item from the database
+  
+});
 
+
+  app.route("/mydata")
+  .get((req,res)=>{
+      if(req.isAuthenticated()){
+        user.findById(req.user.id,function(err,found){
+          if(err){
+            console.log(err);
+          }else{
+            if (found.secret.length > 0) {
+              res.render('mydata', { secrets: found.secret });
+            } else {
+              // Handle the case where 'found' or 'found.secret' is empty
+              res.render('mydata', { secrets: []}); // You can pass an empty array or handle it as needed
+            }
+          }
+
+        });
+        // res.render('mydata',{mysecrets:})
+      }else{
+        res.redirect('login');
+      }
+  })
+  
+
+  // let port=process.env.PORT;
+  // if(port===null||port===""){
+  //   port=3000;
+  // }
+  // app.listen(port);
+///delete
+app.route("/delete/:id")
+.get ((req, res, next)=>{
+  const secretIdToDelete = req.params.id; 
+  console.log(secretIdToDelete);
+  // Assuming you have the ID of the `userSecret` you want to delete
+
+
+// Use Mongoose to find the user and remove the secret by its _id
+user.findByIdAndUpdate(
+  req.user.id, 
+  { $pull: { secret: { _id: secretIdToDelete } } },
+  (err, updatedUser) => {
+    if (err) {
+      console.error(err);
+    } else {
+      if (updatedUser) {      
+        console.log(`userSecret with ID ${secretIdToDelete} has been deleted.`);
+        res.redirect('/mydata')
+      } else {
+        console.log('User or userSecret not found.');
+      }
+    }
+  }
+);
+
+
+});
 
   app.listen(3000, function() {
     console.log("Server started on port 3000");
