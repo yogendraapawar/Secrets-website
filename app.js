@@ -3,7 +3,6 @@ require('dotenv').config();
 const express=require('express');
 var jsdom = require('jsdom');
 const $ = require('jquery')(new jsdom.JSDOM().window);
-const bcrypt = require('bcrypt');
 const mongoose=require('mongoose');
 const passport=require('passport');
 const session=require('express-session');
@@ -78,7 +77,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000//auth/google/secrets",
+    callbackURL: "https://secrets-website.vercel.app/auth/google/secrets",
     userProfileURL:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
