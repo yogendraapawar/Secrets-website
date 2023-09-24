@@ -78,7 +78,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'https://secrets-website.vercel.app/auth/google/secrets',
+    callbackURL: "http://localhost:3000//auth/google/secrets",
     userProfileURL:"https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -336,8 +336,8 @@ app.get("/edit/:id",(req, res)=>{
 });
 
 
-
-  app.listen(3000, function() {
+const PORT = 3000
+  app.listen(PORT, function() {
     console.log("Server started on port 3000");
   });
 ///////////////listen//////////////////////
